@@ -1,0 +1,20 @@
+path: 'C:\Users\agent\Documents\Projekty\euros\detector\data\dataset_larger'
+train: 'images/train'
+val: 'images/test'
+
+names:
+  0: '1_cent'
+  1: '2_cent'
+  2: '5_cent'
+  3: '10_cent'
+  4: '20_cent'
+  5: '50_cent'
+  6: '1_euro'
+  7: '2_euro'
+
+
+
+# Augmentation
+fliplr: 0.0
+mosaic: 0.6
+mixup: 0.0

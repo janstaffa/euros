@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Euro coin counter</title>
+  
+  <link rel="stylesheet" href="static/main.css">
+  <style>
+    span {
+      font-size: 70px;
+    }
+    button {
+      padding: 10px;
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: none;
+    }
+    button img {
+      transition: 0.07s ease-in;
+    }
+    button:hover img {
+      scale: 1.1;
+    }
+    #inner {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div>
+      <!-- <h1>Select image</h1> -->
+      <form method=post enctype=multipart/form-data style="display: none;">
+        <input type=file name=file id="file_select">
+        <input type=submit value=Upload id="submit_btn">
+      </form>
+      <div id="inner">
+        <span>👉</span>
+        <button id="file_select_btn">
+          <img src="/static/coin.webp" alt="Image of a coin" width="150px">
+        </button>
+        <span>👈</span>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.querySelector("#file_select_btn").onclick = () => document.querySelector("#file_select").click();
+    document.querySelector("#file_select").addEventListener("change", (e) => {
+      document.querySelector("form").submit();
+    });
+  </script>
+</body>
+
+</html>

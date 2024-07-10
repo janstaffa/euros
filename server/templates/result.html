@@ -1,0 +1,42 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Euro coin counter</title>
+
+    <link rel="stylesheet" href="static/main.css" />
+    <style>
+      img {
+        border: 3px solid black;
+        border-radius: 10px;
+      }
+      main {
+        flex-direction: column;
+        gap: 20px;
+      }
+      a {
+        position: absolute;
+        top: 10;
+        left: 10;
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+		font-size: 20px;
+		border: 3px solid black;
+		border-radius: 5px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/">&lt; RETURN</a>
+    <main>
+      <img src="/result/{{filename}}" height="400px" />
+      <h1>TOTAL VALUE: {{value}}€</h1>
+    </main>
+  </body>
+</html>
