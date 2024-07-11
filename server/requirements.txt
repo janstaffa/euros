@@ -1,0 +1,4 @@
+Flask==3.0.3
+Pillow==10.4.0
+ultralytics==8.2.50
+Werkzeug==3.0.3

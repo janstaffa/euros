@@ -29,8 +29,8 @@ import glob
 
 app = Flask(__name__)
 
-
 model = YOLO(MODEL_PATH)
+
 
 for ORIENTATION_KEY in ExifTags.TAGS.keys():
     if ExifTags.TAGS[ORIENTATION_KEY] == "Orientation":
@@ -38,7 +38,7 @@ for ORIENTATION_KEY in ExifTags.TAGS.keys():
 
 
 @app.route("/", methods=["GET", "POST"])
-def home():
+def root():
     if request.method == "POST":
         if "file" not in request.files:
             flash("No file part")
@@ -55,14 +55,15 @@ def home():
             img = Image.open(path)
 
             exif = img.getexif()
-
+            
             # Rotate
-            if exif[ORIENTATION_KEY] == 3:
-                img = img.rotate(180, expand=True)
-            elif exif[ORIENTATION_KEY] == 6:
-                img = img.rotate(270, expand=True)
-            elif exif[ORIENTATION_KEY] == 8:
-                img = img.rotate(90, expand=True)
+            if len(exif) > 0:
+                if exif[ORIENTATION_KEY] == 3:
+                    img = img.rotate(180, expand=True)
+                elif exif[ORIENTATION_KEY] == 6:
+                    img = img.rotate(270, expand=True)
+                elif exif[ORIENTATION_KEY] == 8:
+                    img = img.rotate(90, expand=True)
             # Resize
             if img.size != INPUT_IMG_SIZE:
                 # Crop to aspect ratio
@@ -144,4 +145,4 @@ if __name__ == "__main__":
 
     print("- Removed old uploaded/result files")
 
-    app.run()
+    app.run(host="127.0.0.1", port=8080, debug=True)
